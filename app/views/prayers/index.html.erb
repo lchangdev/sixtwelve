@@ -1,0 +1,10 @@
+<a href="/prayers/new">New Prayer Request</a>
+<br>
+<ul>
+<% @prayers.each do |prayer| %>
+<li><%= link_to prayer.title, prayer_path(prayer) %></li>
+<% end %>
+</ul>
+
+
+

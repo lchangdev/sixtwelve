@@ -11,18 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614173258) do
+ActiveRecord::Schema.define(version: 20140615195005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "lists", force: true do |t|
-    t.string   "title",       null: false
+  create_table "comments", force: true do |t|
     t.string   "description", null: false
+    t.integer  "prayer_id",   null: false
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "lists", ["title"], name: "index_lists_on_title", unique: true, using: :btree
+  create_table "groups", force: true do |t|
+    t.string "name",              null: false
+    t.string "security_question", null: false
+    t.string "security_answer",   null: false
+  end
+
+  create_table "prayers", force: true do |t|
+    t.string   "title",       null: false
+    t.string   "description", null: false
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "prayers", ["title"], name: "index_prayers_on_title", unique: true, using: :btree
+
+  create_table "users", force: true do |t|
+    t.string   "provider",         null: false
+    t.string   "uid",              null: false
+    t.string   "name",             null: false
+    t.string   "email",            null: false
+    t.string   "image",            null: false
+    t.string   "location"
+    t.string   "oauth_token",      null: false
+    t.datetime "oauth_expires_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "group_id"
+  end
+
+  add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
 
 end

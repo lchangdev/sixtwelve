@@ -1,0 +1,25 @@
+Title: <%= @prayer.title %>
+<br>
+Description: <%= @prayer.description %>
+
+
+<h4>Comments</h4>
+
+<% @prayer.comments.each do |comment| %>
+  <p>
+    <%= comment.created_at %>
+    <%= comment.description %>
+  </p>
+<% end %>
+
+<h4>Add a Comment</h4>
+
+<%= form_for [@prayer, @comment] do |f| %>
+  <%= f.label :description %>:
+  <%= f.text_field :description %><br>
+
+  <%= f.submit %>
+<% end %>
+
+
+
