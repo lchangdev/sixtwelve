@@ -1,5 +1,5 @@
 <h1> New Prayer Request </h1>
-<%= form_for @prayer do |f| %>
+<%= form_for [@group, @prayer] do |f| %>
   <%= f.label :title %>:
   <%= f.text_field :title, required: true %><br>
 
@@ -7,4 +7,5 @@
   <%= f.text_area :description, required: true %><br>
 
   <%= f.submit %>
+
 <% end %>

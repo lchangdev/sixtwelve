@@ -4,10 +4,13 @@ class CommentsController < ApplicationController
 
     @comment = Comment.new(comment_params)
     @comment.prayer = @prayer
+    @comment.user_id = current_user.id
+
     if @comment.save
-      redirect_to "/prayers/#{@prayer.id}"
+      redirect_to prayer_path(@comment.prayer)
     else
-      flash.now[:notice] = "Could not post your comment. Please try again."
+      flash.now[:notice] = "comment did not save"
+
       render :new
     end
   end

@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  resources :prayers
-  resources :groups
+  # resources :prayers do
+  #   resources :comments, only: :create
+  # end
+
+  resources :groups do
+    resources :prayers
+  end
+
   resources :prayers do
     resources :comments, only: :create
   end
@@ -9,12 +15,12 @@ Rails.application.routes.draw do
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
-  root to: 'prayers#index'
+  root to: 'groups#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
+  # You can have the root of your site routed wwith "root"
   # root 'welcome#index'
 
   # Example of regular route:

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615195005) do
+ActiveRecord::Schema.define(version: 20140615230927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,12 +30,22 @@ ActiveRecord::Schema.define(version: 20140615195005) do
     t.string "security_answer",   null: false
   end
 
+  add_index "groups", ["name"], name: "index_groups_on_name", unique: true, using: :btree
+
+  create_table "members", force: true do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+  end
+
+  add_index "members", ["user_id", "group_id"], name: "index_members_on_user_id_and_group_id", unique: true, using: :btree
+
   create_table "prayers", force: true do |t|
     t.string   "title",       null: false
     t.string   "description", null: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "group_id"
   end
 
   add_index "prayers", ["title"], name: "index_prayers_on_title", unique: true, using: :btree
@@ -51,7 +61,6 @@ ActiveRecord::Schema.define(version: 20140615195005) do
     t.datetime "oauth_expires_at", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "group_id"
   end
 
   add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree

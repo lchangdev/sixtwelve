@@ -1,0 +1,16 @@
+<h1>Please select a group</h1>
+
+<br>
+<form name="input" action="/groups" method="get">
+  <select>
+    <% @groups.each do |group| %>
+    <option value="<%= group.name %>"><%= group.name%></option>
+    <% end %>
+  </select>
+</form>
+
+<p>Don't see your group? Create one here</p>
+<%= link_to "create new group", new_group_path %>
+
+
+

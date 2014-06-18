@@ -1,0 +1,11 @@
+<h1><%= @group.name %></h1>
+<br>
+<%= link_to "New Prayer Request", new_group_prayer_path(params[:id]) %>
+<br>
+<h3>Prayer Requests</h3>
+<br>
+<ul>
+  <% @group.prayers.each do |prayer| %>
+    <li><%= link_to prayer.title, prayer_path(prayer) %></li>
+  <% end %>
+</ul>

@@ -9,7 +9,7 @@
 <body>
 <div id="container">
   <% if current_user %>
-    signed in as <strong><%= current_user.name %></strong>!
+    signed in as <img src="<%=current_user.image%>" class="avatar"><strong><%= current_user.name %></strong>!
     <%= link_to "sign out", signout_path, id: "sign_out" %>
   <% else %>
     <%= link_to "sign in with Facebok", "/auth/facebook", id: "sign_in" %>

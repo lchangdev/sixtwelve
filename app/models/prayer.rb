@@ -5,4 +5,6 @@ class Prayer < ActiveRecord::Base
 
   has_many :comments
   belongs_to :user
+  belongs_to :group
+  # accepts_nested_attributes_for :group
 end
