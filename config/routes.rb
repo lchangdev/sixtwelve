@@ -11,6 +11,12 @@ Rails.application.routes.draw do
     resources :comments, only: :create
   end
 
+  resources :members, only: :create
+
+  namespace :admin do
+    resources :groups
+  end
+
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]

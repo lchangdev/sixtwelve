@@ -1,4 +1,10 @@
-<h1>Please select a group</h1>
+<h1 class="header">Please select a group</h1>
+
+<ul class="list-group">
+  <% @groups.each do |group| %>
+    <li class="list-group-item"><%=link_to group.name, group_path(group)%></li>
+  <% end %>
+</ul>
 
 <br>
 <form name="input" action="/groups" method="get">

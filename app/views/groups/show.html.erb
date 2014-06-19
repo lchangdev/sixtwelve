@@ -1,11 +1,41 @@
-<h1><%= @group.name %></h1>
-<br>
-<%= link_to "New Prayer Request", new_group_prayer_path(params[:id]) %>
-<br>
-<h3>Prayer Requests</h3>
-<br>
-<ul>
-  <% @group.prayers.each do |prayer| %>
-    <li><%= link_to prayer.title, prayer_path(prayer) %></li>
-  <% end %>
-</ul>
+<div class="group-show-container">
+  <div class="new-prayer-container col-md-12">
+    <%= link_to "+", new_group_prayer_path(params[:id]), class: 'new-prayer-link' %>
+  </div>
+
+  <div class="group-name-container col-md-12">
+    <h1 class="header group-header"><%= @group.name %></h1>
+  </div>
+
+  <div class="members-container col-md-12">
+    <h2 class="header member-header">Members</h2>
+      <div class="row">
+        <% 5.times do %>
+          <div class="member-info-container col-md-3">
+            <% @members.each do |member| %>
+              <div class="member-portrait-container">
+                <%= image_tag(member.user.image, class: "img-circle portrait")%>
+              </div>
+              <div class="member-name-container">
+                <%= member.user.name%></li>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+  </div>
+
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr><th class="header prayer-header">Prayer Requests</th></tr>
+      </thead>
+      <% @group.prayers.each do |prayer| %>
+      <tr>
+        <td><img src="<%=prayer.user.image%>" class="img-circle" alt="Responsive image"> <%= link_to prayer.title, prayer_path(prayer) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+</div>

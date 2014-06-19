@@ -1,0 +1,68 @@
+/* global */
+.body-container {
+padding: 100px 15px;
+}
+
+body, .header {
+  font-weight: 100;
+}
+
+/* navbar */
+.icon-bar {
+  background-color: black;
+}
+
+.container-fluid {
+  border-bottom: 1px solid black;
+}
+
+.navbar{
+  background-color: white;
+}
+/* tables */
+
+.table td {
+  text-align: justify;
+}
+
+/* groups show */
+.new-prayer-container {
+  text-align: right;
+}
+
+.group-name-container,
+.members-container {
+  text-align: center;
+}
+
+.new-prayer-link,
+.prayer-header,
+.member-header {
+  font-size: 2em;
+}
+
+.group-header {
+  font-size: 5em;
+}
+
+.members-container {
+  background-color: tomato;
+}
+.member-info-container {
+  background-color: lightblue;
+  height: 200px;
+}
+.portrait {
+  height: 100px;
+}
+.page-links-container {
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+}
+
+
+
+
+
+

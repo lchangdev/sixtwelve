@@ -6,19 +6,25 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    @member = Member.new
+    @users = User.all
+    @groups = Group.all
   end
 
   def create
     @group = Group.new(group_params)
 
+
     if @group.save
-      flash[:notice] = "Successfully saved your group."
-      redirect_to groups_path
+      flash[:notice] = "Successfully saved group."
+      redirect_to new_group_path
     end
+
   end
 
   def show
     @group = Group.find(params[:id])
+    @members = Member.where(group_id: params[:id])
   end
 
   private
