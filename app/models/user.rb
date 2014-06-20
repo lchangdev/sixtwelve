@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates :image, presence: true
   validates :oauth_token, presence: true
   validates :oauth_expires_at, presence: true
+  validates :role, presence: true
 
   has_many :prayers
   has_many :comments

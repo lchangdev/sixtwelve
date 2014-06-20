@@ -1,44 +1,44 @@
 <div class="new-group-member-container col-md-12">
-  <div class="new-group-container col-md-12">
-    <h1 class="header"> New Group </h1>
-    <%= form_for @group, html: { class: "form-horizontal" } do |f| %>
-      <div class="form-group">
-        <%= f.label :name, class: "col-md-2 control-label header"%>
-        <div class="col-md-5">
-          <%= f.text_field :name, required: true, class: "form-control" %><br>
+  <div class="new-container col-md-12">
+    <div class="new-group-container col-md-6">
+      <h1 class="header"> New Group </h1>
+      <%= form_for @group, html: { class: "form-horizontal" } do |f| %>
+        <div class="form-group">
+          <%= f.label :name, class: "col-md-1 control-label header"%>
+          <div class="col-md-5">
+            <%= f.text_field :name, required: true, class: "form-control" %><br>
+          </div>
         </div>
-      </div>
 
-      <div class="col-md-5">
-        <%= f.submit 'submit', class: 'btn btn-default' %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="new-member-container col-md-12">
-    <h1 class="header"> New Member </h1>
-    <%= form_for @member, html: { class: "form-horizontal" } do |f| %>
-      <div class="form-group">
-      <%= f.label 'User ID', class: "col-md-2 control-label header" %>
-        <div class="col-md-5">
-          <%= f.text_field :user_id, required: true, class: "form-control" %>
+        <div class="col-md-6">
+          <%= f.submit 'submit', class: 'btn btn-default' %>
         </div>
-      </div>
+      <% end %>
+    </div>
 
-      <div class="form-group">
-        <%= f.label 'Group ID', class: "col-md-2 control-label header" %>
-        <div class="col-md-5">
-          <%= f.text_field :group_id, required: true, class: "form-control" %>
+    <div class="new-member-container col-md-6">
+      <h1 class="header"> New Member </h1>
+      <%= form_for @member, html: { class: "form-horizontal" } do |f| %>
+        <div class="form-group">
+        <%= f.label 'User ID', class: "col-md-1 control-label header" %>
+          <div class="col-md-5">
+            <%= f.text_field :user_id, required: true, class: "form-control" %>
+          </div>
         </div>
-      </div>
 
-      <div class="col-md-5">
-        <%= f.submit 'submit', class: 'btn btn-default' %>
-      </div>
-    <% end %>
-  </div>
+        <div class="form-group">
+          <%= f.label 'Group ID', class: "col-md-1 control-label header" %>
+          <div class="col-md-5">
+            <%= f.text_field :group_id, required: true, class: "form-control" %>
+          </div>
+        </div>
 
-  <div class="user-group-info-container col-md-12">
+        <div class="col-md-6">
+          <%= f.submit 'submit', class: 'btn btn-default' %>
+        </div>
+      <% end %>
+    </div>
+
     <div class="col-md-6">
       <h3 class="header"> Current Users </h3>
       <table class="table">
@@ -58,12 +58,12 @@
         </tbody>
       </table>
     </div>
-
     <div class="col-md-6">
       <h3 class="header"> Current Groups </h3>
       <table class="table">
         <thead>
           <tr>
+            <th></th>
             <th class="header">Group Name</th>
             <th class="header">Group ID</th>
           </tr>
@@ -71,6 +71,7 @@
         <tbody>
           <% @groups.each do |group| %>
             <tr>
+              <td><%= link_to "Edit", edit_group_path(group), class: 'edit-link' %></td>
               <td><%= group.name %></td>
               <td><%= group.id %></td>
             </tr>
@@ -79,4 +80,5 @@
       </table>
     </div>
   </div>
+
 </div>

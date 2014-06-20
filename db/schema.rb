@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620175755) do
+ActiveRecord::Schema.define(version: 20140620191210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,8 +45,6 @@ ActiveRecord::Schema.define(version: 20140620175755) do
     t.datetime "updated_at"
     t.integer  "group_id"
   end
-
-  add_index "prayers", ["title"], name: "index_prayers_on_title", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "provider",                          null: false

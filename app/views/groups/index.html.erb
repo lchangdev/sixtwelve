@@ -1,5 +1,6 @@
 <div class="homepage-container page-header col-md-12">
-  <div class="col-md-12">
+
+  <div class="tag-container col-md-12">
     <h1 class="header"><span class="homepage-header">sixtwelve</span><br><small class="header">Easily share prayers with one another</small></h1>
   </div>
 
@@ -24,8 +25,6 @@
               <% if current_user.id == member.user_id %>
                 <td><%= group.name %></td>
                 <td><%=link_to 'Enter', group_path(group), class: 'group-link' %></td>
-              <% else %>
-                <td>Do not have access to this group.</td>
               <% end %>
             </tr>
           <% end %>
@@ -34,4 +33,5 @@
     </div>
     <% end %>
   </div>
+
 </div>

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: :destroy
-  resources :members, only: :create
+  resources :members, only: [:create, :destroy]
 
   namespace :admin do
     resources :groups

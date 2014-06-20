@@ -40,7 +40,7 @@
         <div class="collapse navbar-collapse">
 
         <% if signed_in? && admin? %>
-          <p class="navbar-text navbar-right"><%= link_to "Admin", new_group_path %></p>
+          <p class="navbar-text navbar-right"><%= link_to "admin", new_group_path, class: 'login-link' %></p>
         <% end %>
 
         <% if current_user %>

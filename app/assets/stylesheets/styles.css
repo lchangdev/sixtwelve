@@ -12,7 +12,20 @@ body, .header {
   text-align: justify;
 }
 
+#flash-message {
+  padding-top: 20px;
+  text-align: center;
+}
 /* navbar */
+.new-container,
+.new-group-container,
+.new-member-container {
+  height: 300px;
+}
+
+.new-group-container {
+  padding-top: 15px;
+}
 
 .icon-bar {
   background-color: black;
@@ -32,6 +45,10 @@ body, .header {
   font-size: 2.5em;
 }
 
+.tag-container {
+  padding-bottom: 200px;
+}
+
 #email {
   text-decoration: underline;
 }
@@ -40,16 +57,19 @@ body, .header {
   text-align: center;
 }
 
+.instructions-container {
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
 .instructions-container h5 {
   line-height: 30px;
 }
 
 #instruction-text {
   font-weight: 300;
-}
-
-.homepage-container {
-  padding-bottom: 300px;
 }
 
 /* groups show */
@@ -93,8 +113,8 @@ body, .header {
 }
 
 .portrait {
-  height: 150px;
-  width: 150px;
+  height: 175px;
+  width: 175px;
 }
 
 .avatar {
@@ -102,13 +122,25 @@ body, .header {
   width: 50px;
 }
 
+.prayer-request-container {
+  padding-top: 50px;
+}
 .page-links-container {
-  width: 100%;
   text-align: center;
   padding-top: 20px;
   padding-bottom: 100px;
 }
 
+.pagination-container {
+  text-align: center;
+}
+
+/* prayers show */
+
+.prayer-comments-container,
+.new-prayer-comment-container {
+  padding-bottom: 10px;
+}
 /* new groups and members */
 
 .new-member-container,

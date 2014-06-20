@@ -11,6 +11,14 @@ class MembersController < ApplicationController
     end
   end
 
+  def destroy
+    @member = Member.find(params[:id])
+    @member.destroy
+    flash[:notice] = "You have deleted this member."
+
+    redirect_to group_path(@member.group_id)
+  end
+
   private
 
   def member_params

@@ -33,6 +33,23 @@ class GroupsController < ApplicationController
     @prayers = @group.prayers.paginate(:page => params[:page], :per_page => 15)
   end
 
+  def edit
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    @group = Group.find(params[:id])
+    if @group.update(group_params)
+      flash[:notice] = "Successfully edited group."
+
+      redirect_to groups_path
+    else
+      flash.now[:notice] = "Did not save. Please try again."
+
+      render :new
+    end
+  end
+
   private
 
   def group_params

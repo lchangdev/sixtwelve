@@ -1,10 +1,7 @@
 class Group < ActiveRecord::Base
+  validates :name, presence: true, uniqueness: true
 
-  has_many :members
-  has_many :prayers
+  has_many :members, dependent: :destroy
+  has_many :prayers, dependent: :destroy
   has_many :users, through: :members
-  # accepts_nested_attributes_for :prayers
-
 end
-
-

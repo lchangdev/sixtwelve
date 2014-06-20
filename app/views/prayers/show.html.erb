@@ -1,10 +1,13 @@
- <div class="group-show-container col-md-12">
+<div class="group-show-container col-md-12">
+
   <div class="prayer-author col-md-12">
     <h5 class="header">Prayer requested by: <%= @prayer.user.name %></h5>
   </div>
+
   <div class="prayer-title col-md-12">
     <h2 class="header"><%= @prayer.title %></h2>
   </div>
+
   <div class="prayer-description col-md-12">
     <h2 class="header">&ldquo;<%= @prayer.description %>&rdquo;</h2>
   </div>
@@ -29,9 +32,9 @@
         <% end %>
       </tbody>
     </table>
-    <%= will_paginate @comments %>
   </div>
-  <div class="new-prayer-form-container col-md-12">
+
+  <div class="new-prayer-comment-container col-md-12">
   <%= form_for [@prayer, @comment], html: { class: "form-inline" } do |f| %>
     <div class="form-group">
     <%= f.label :comment, class: "col-md-4 control-label header" %>
@@ -44,8 +47,14 @@
     </div>
   <% end %>
   </div>
+
+  <div class="pagination-container col-md-12">
+    <%= will_paginate @comments %>
+  </div>
+
   <div class="page-links-container col-md-12">
     <%= link_to "back", group_path(@prayer.group.id), class: 'back-link'%>
   </div>
+
 </div>
 
