@@ -37,7 +37,7 @@
         <td>by <%= prayer.user.name %></td>
         <td><%= prayer.created_at.strftime("%d %b. %Y") %></td>
         <% if current_user.id == prayer.user_id %>
-          <td><%= link_to "Edit", edit_prayer_path(prayer), class: 'edit-link' %></td>
+          <td><%= link_to "edit", edit_prayer_path(prayer), class: 'edit-link' %></td>
           <td><%= link_to 'delete', prayer, method: :delete, class: 'delete-link' %></td>
         <% else %>
           <td></td>

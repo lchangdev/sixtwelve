@@ -42,12 +42,20 @@ class GroupsController < ApplicationController
     if @group.update(group_params)
       flash[:notice] = "Successfully edited group."
 
-      redirect_to groups_path
+      redirect_to new_group_path
     else
       flash.now[:notice] = "Did not save. Please try again."
 
       render :new
     end
+  end
+
+  def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+    flash[:notice] = "You have deleted this group."
+
+    redirect_to new_group_path
   end
 
   private

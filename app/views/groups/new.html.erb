@@ -46,14 +46,18 @@
           <tr>
             <th class="header">User Name</th>
             <th class="header">User ID</th>
+            <th class="header">Member of</th>
           </tr>
         </thead>
         <tbody>
           <% @users.each do |user| %>
-            <tr>
-              <td><%= user.name %></td>
-              <td><%= user.id %></td>
-            </tr>
+            <% user.groups.each do |group| %>
+              <tr>
+                <td><%= user.name %></td>
+                <td><%= user.id %></td>
+                <td><%= group.name %></td>
+              </tr>
+            <% end %>
           <% end %>
         </tbody>
       </table>
@@ -64,6 +68,7 @@
         <thead>
           <tr>
             <th></th>
+            <th></th>
             <th class="header">Group Name</th>
             <th class="header">Group ID</th>
           </tr>
@@ -71,7 +76,8 @@
         <tbody>
           <% @groups.each do |group| %>
             <tr>
-              <td><%= link_to "Edit", edit_group_path(group), class: 'edit-link' %></td>
+              <td><%= link_to "edit", edit_group_path(group), class: 'edit-link' %></td>
+              <td><%= link_to 'delete', group, method: :delete, class: 'delete-link' %></td>
               <td><%= group.name %></td>
               <td><%= group.id %></td>
             </tr>

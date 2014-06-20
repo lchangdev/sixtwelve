@@ -2,6 +2,8 @@ class MembersController < ApplicationController
   def create
     @member = Member.new(member_params)
 
+    @group = Group.all
+
     if @member.save
       flash[:notice] = "Successfully saved member."
       redirect_to new_group_path
