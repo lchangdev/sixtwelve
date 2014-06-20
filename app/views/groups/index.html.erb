@@ -1,22 +1,37 @@
-<h1 class="header">Please select a group</h1>
+<div class="homepage-container page-header col-md-12">
+  <div class="col-md-12">
+    <h1 class="header"><span class="homepage-header">sixtwelve</span><br><small class="header">Easily share prayers with one another</small></h1>
+  </div>
 
-<ul class="list-group">
-  <% @groups.each do |group| %>
-    <li class="list-group-item"><%=link_to group.name, group_path(group)%></li>
-  <% end %>
-</ul>
+  <div class="instructions-container col-md-12">
+    <h2 class="header">Instructions</h2>
+      <h5 class="header">Once you have signed in, email <a href="mailto:sixtwelveinfo@gmail.com" id="email">sixtwelveinfo@gmail.com</a> with your <span id="instruction-text">full name</span> and the <span id="instruction-text">group</span> you wish to join.</h5>
+      <h5 class="header"><span id="instruction-text">sixtwelve</span> will confirm your information and add you as a member of the requested group.</h5>
+  </div>
 
-<br>
-<form name="input" action="/groups" method="get">
-  <select>
-    <% @groups.each do |group| %>
-    <option value="<%= group.name %>"><%= group.name%></option>
+  <div class="group-index-container col-md-12">
+    <% if !signed_in? %>
+      <h2 class="header" id="sign-in-message">Please sign in to join your group.</h2>
+    <% else %>
+    <div class="col-md-12">
+      <h1 class="header">Please select a group</h1>
+    </div>
+    <div class="col-md-12">
+      <table class="table">
+        <% @groups.each do |group| %>
+          <% group.members.each do |member| %>
+            <tr>
+              <% if current_user.id == member.user_id %>
+                <td><%= group.name %></td>
+                <td><%=link_to 'Enter', group_path(group), class: 'group-link' %></td>
+              <% else %>
+                <td>Do not have access to this group.</td>
+              <% end %>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
     <% end %>
-  </select>
-</form>
-
-<p>Don't see your group? Create one here</p>
-<%= link_to "create new group", new_group_path %>
-
-
-
+  </div>
+</div>

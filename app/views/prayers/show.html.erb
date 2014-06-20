@@ -1,44 +1,51 @@
-<div id="group-name-container">
-  <h3 class="header"><%= @prayer.group.name %></h3>
-</div>
-<div>
-  <h1 class="header"><%= @prayer.title %></h1>
-</div>
-<div>
-  <h4 class="header">Details</h4>
-  <h1 class="header">&ldquo; <%= @prayer.description %> &rdquo;</h1>
-</div>
+ <div class="group-show-container col-md-12">
+  <div class="prayer-author col-md-12">
+    <h5 class="header">Prayer requested by: <%= @prayer.user.name %></h5>
+  </div>
+  <div class="prayer-title col-md-12">
+    <h2 class="header"><%= @prayer.title %></h2>
+  </div>
+  <div class="prayer-description col-md-12">
+    <h2 class="header">&ldquo;<%= @prayer.description %>&rdquo;</h2>
+  </div>
 
-<div>
-  <table class="table">
-    <thead>
-      <tr><th class="header">Comments</th></tr>
-    </thead>
-    <tbody>
-      <% @prayer.comments.each do |comment| %>
-        <tr>
-          <td><%= image_tag(comment.user.image, class: "img-circle") %> &ldquo;<%= comment.description %>&rdquo;</td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-<div>
-<%= form_for [@prayer, @comment], html: { class: "form-inline" } do |f| %>
-  <div class="form-group">
-  <%= f.label :comment, class: "col-sm-4 control-label header" %>
-    <div class="col-md-6">
-      <%= f.text_field :description, required: true, class: "form-control"%><br>
+  <div class="prayer-comments-container col-md-12">
+    <table class="table">
+      <thead>
+        <tr><th class="header">Comments</th></tr>
+      </thead>
+      <tbody>
+        <% @comments.each do |comment| %>
+          <tr>
+            <td><%= image_tag(comment.user.image, class: "img-circle avatar") %></td>
+            <td><%= comment.user.name %></td>
+            <td>&ldquo;<%= comment.description %>&rdquo;</td>
+            <% if current_user.id == comment.user_id %>
+              <td><%= link_to 'delete', comment, method: :delete, class: 'delete-link' %></td>
+            <% else %>
+              <td></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @comments %>
+  </div>
+  <div class="new-prayer-form-container col-md-12">
+  <%= form_for [@prayer, @comment], html: { class: "form-inline" } do |f| %>
+    <div class="form-group">
+    <%= f.label :comment, class: "col-md-4 control-label header" %>
+      <div class="col-md-6">
+        <%= f.text_field :description, required: true, class: "form-control"%><br>
+      </div>
     </div>
+    <div class="form-group">
+      <%= f.submit 'submit', class: 'btn btn-default comment-btn' %>
+    </div>
+  <% end %>
   </div>
-  <div class="form-group">
-      <%= f.submit 'submit', class: 'btn btn-default' %>
-
+  <div class="page-links-container col-md-12">
+    <%= link_to "back", group_path(@prayer.group.id), class: 'back-link'%>
   </div>
-<% end %>
 </div>
-<div class="page-links-container">
-  <%= link_to "back", group_path(@prayer.group.id)%>
-</div>
-
 

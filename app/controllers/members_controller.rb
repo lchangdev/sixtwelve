@@ -5,6 +5,9 @@ class MembersController < ApplicationController
     if @member.save
       flash[:notice] = "Successfully saved member."
       redirect_to new_group_path
+    else
+      flash[:notice] = "This user is already a member." # does not work
+      redirect_to new_group_path
     end
   end
 

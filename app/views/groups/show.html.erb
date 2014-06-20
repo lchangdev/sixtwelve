@@ -1,5 +1,5 @@
-<div class="group-show-container">
-  <div class="new-prayer-container col-md-12">
+<div class="group-show-container col-md-12">
+  <div class="new-prayer-container col-md-11">
     <%= link_to "+", new_group_prayer_path(params[:id]), class: 'new-prayer-link' %>
   </div>
 
@@ -10,7 +10,7 @@
   <div class="members-container col-md-12">
     <h2 class="header member-header">Members</h2>
       <div class="row">
-        <% 5.times do %>
+        <% @members.length.times do %>
           <div class="member-info-container col-md-3">
             <% @members.each do |member| %>
               <div class="member-portrait-container">
@@ -30,12 +30,22 @@
       <thead>
         <tr><th class="header prayer-header">Prayer Requests</th></tr>
       </thead>
-      <% @group.prayers.each do |prayer| %>
+      <% @prayers.reverse.each do |prayer| %>
       <tr>
-        <td><img src="<%=prayer.user.image%>" class="img-circle" alt="Responsive image"> <%= link_to prayer.title, prayer_path(prayer) %></td>
+        <td><img src="<%= prayer.user.image %>" class="img-circle avatar" alt="Responsive image"> <%= link_to prayer.title, prayer_path(prayer), class: 'prayer-link' %></td>
+        <td>by <%= prayer.user.name %></td>
+        <td><%= prayer.created_at.strftime("%d %b. %Y") %></td>
+        <% if current_user.id == prayer.user_id %>
+          <td><%= link_to "Edit", edit_prayer_path(prayer), class: 'edit-link' %></td>
+          <td><%= link_to 'delete', prayer, method: :delete, class: 'delete-link' %></td>
+        <% else %>
+          <td></td>
+          <td></td>
+        <% end %>
         </tr>
       <% end %>
     </table>
-  </div>
 
+  </div>
+  <%= will_paginate @prayers %>
 </div>

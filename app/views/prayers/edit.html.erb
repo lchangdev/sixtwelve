@@ -1,0 +1,25 @@
+<div class="edit-prayer-container col-md-12">
+  <h1 class="header">Edit Prayer</h1>
+  <%= form_for @prayer, html: { class: "form-horizontal" } do |f| %>
+    <div class="form-group">
+      <%= f.label :title, class: "col-md-2 control-label header" %>
+      <div class="col-md-5">
+        <%= f.text_field :title, required: true, class: "form-control" %><br>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description, class: "col-md-2 control-label header" %>
+      <div class="col-md-5">
+        <%= f.text_area :description, required: true, class: "form-control" %><br>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <%= f.submit 'Submit', class: 'btn btn-default' %>
+    </div>
+  <% end %>
+  <div class="page-links-container col-md-12">
+    <%= link_to "back", group_path(@prayer.group_id)%>
+  </div>
+</div>

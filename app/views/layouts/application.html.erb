@@ -35,29 +35,38 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/groups">sixtwelve initiative</a>
-
+          <a class="navbar-brand" href="/groups">sixtwelve</a>
         </div>
         <div class="collapse navbar-collapse">
+
+        <% if signed_in? && admin? %>
+          <p class="navbar-text navbar-right"><%= link_to "Admin", new_group_path %></p>
+        <% end %>
+
         <% if current_user %>
-          <p class="navbar-text navbar-right"><%= current_user.name %> <%= link_to "sign out", signout_path, id: "sign_out" %></p>
+          <p class="navbar-text navbar-right"><%= current_user.name %> <%= link_to "sign out", signout_path, id: "sign_out", class: 'login-link' %></p>
         <% else %>
-          <p class="navbar-text navbar-right"><%= link_to "sign in", "/auth/facebook", id: "sign_in" %></p>
+          <p class="navbar-text navbar-right"><%= link_to "sign in", "/auth/facebook", id: "sign_in", class: 'login-link' %></p>
         <% end %>
 
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
+    <div class="body-container col-md-12">
+      <div id="flash-message" class="alert">
+        <% if flash.any? %>
+          <%= flash[:notice] %>
+        <% end %>
+      </div>
 
-    <div class="body-container">
+      <%= yield %>
 
-    <div id="flash-message" class="alert">
-      <% if flash.any? %>
-        <%= flash[:notice] %>
-      <% end %>
-    <%= yield %>
-
+    </div>
+    <div class="navbar-fixed-bottom col-md-12">
+      <div class="container footer-container col-md-12">
+        <p>Lawrence Chang Production</p>
+      </div>
     </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->

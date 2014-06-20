@@ -1,11 +1,26 @@
-<h1> New Prayer Request </h1>
-<%= form_for [@group, @prayer] do |f| %>
-  <%= f.label :title %>:
-  <%= f.text_field :title, required: true %><br>
+<div class="new-prayer-request-container col-md-12">
+  <div class="new-prayer-form-container col-md-12">
+    <h1 class="header"> New Prayer Request </h1>
+    <%= form_for [@group, @prayer], html: { class: "form-horizontal" } do |f| %>
+      <div class="form-group">
+        <%= f.label :title, class: "col-md-2 control-label header" %>
+        <div class="col-md-5">
+          <%= f.text_field :title, required: true, class: "form-control"  %><br>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :description, class: "col-md-2 control-label header"%>
+        <div class="col-md-5">
+          <%= f.text_area :description, required: true, class: "form-control" %><br>
+        </div>
+      </div>
 
-  <%= f.label :description %>:
-  <%= f.text_area :description, required: true %><br>
-
-  <%= f.submit %>
-
-<% end %>
+      <div class="col-md-5">
+        <%= f.submit 'submit', class: 'btn btn-default' %>
+      </div>
+    <% end %>
+  </div>
+  <div class="page-links-container col-md-12">
+    <%= link_to "back", group_path(@group.id)%>
+  </div>
+</div>

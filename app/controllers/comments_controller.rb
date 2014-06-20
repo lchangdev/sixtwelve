@@ -9,10 +9,17 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to prayer_path(@comment.prayer)
     else
-      flash.now[:notice] = "comment did not save"
-
+      flash.now[:notice] = "Comment did not save."
       render :new
     end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    flash[:notice] = "You have deleted your comment."
+
+    redirect_to prayer_path(@comment.prayer_id)
   end
 
   private
