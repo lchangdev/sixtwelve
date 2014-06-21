@@ -4,7 +4,8 @@
 padding: 30px 15px;
 }
 
-body, .header {
+body,
+.header {
   font-weight: 200;
 }
 
@@ -16,7 +17,9 @@ body, .header {
   padding-top: 20px;
   text-align: center;
 }
+
 /* navbar */
+
 .new-container,
 .new-group-container,
 .new-member-container {
@@ -35,7 +38,7 @@ body, .header {
   border-bottom: 1px solid black;
 }
 
-.navbar{
+.navbar {
   background-color: white;
 }
 
@@ -108,23 +111,9 @@ body, .header {
   font-size: 5em;
 }
 
-.row {
-  background-color: lightblue;
-}
-
-.member-portrait-container {
-  background-color: grey;
-}
-
-.member-name-container {
-  background-color: orange;
-}
 .member-info-container {
   padding-top: 10px;
-  background-color: tomato;
 }
-
-
 
 .portrait {
   height: 175px;
@@ -139,6 +128,7 @@ body, .header {
 .prayer-request-container {
   padding-top: 50px;
 }
+
 .page-links-container {
   text-align: center;
   padding-top: 20px;
@@ -155,6 +145,7 @@ body, .header {
 .new-prayer-comment-container {
   padding-bottom: 10px;
 }
+
 /* new groups and members */
 
 .new-member-container,
