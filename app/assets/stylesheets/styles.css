@@ -108,9 +108,23 @@ body, .header {
   font-size: 5em;
 }
 
-.member-info-container {
-  height: 200px;
+.row {
+  background-color: lightblue;
 }
+
+.member-portrait-container {
+  background-color: grey;
+}
+
+.member-name-container {
+  background-color: orange;
+}
+.member-info-container {
+  padding-top: 10px;
+  background-color: tomato;
+}
+
+
 
 .portrait {
   height: 175px;

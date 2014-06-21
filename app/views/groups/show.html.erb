@@ -10,17 +10,15 @@
   <div class="members-container col-md-12">
     <h2 class="header member-header">Members</h2>
       <div class="row">
-        <% @members.length.times do %>
+        <% @members.each do |member| %>
           <div class="member-info-container col-md-3">
-            <% @members.each do |member| %>
-              <div class="member-portrait-container">
-                <%= image_tag(member.user.image, class: "img-circle portrait")%>
-              </div>
-              <div class="member-name-container">
-                <%= member.user.name%><br>
-                <%= link_to 'delete', member, method: :delete, class: 'delete-link' %>
-              </div>
-            <% end %>
+            <div class="member-portrait-container">
+              <%= image_tag(member.user.image, class: "img-circle portrait")%>
+            </div>
+            <div class="member-name-container">
+              <%= member.user.name%><br>
+              <%= link_to 'delete', member, method: :delete, class: 'delete-link' %>
+            </div>
           </div>
         <% end %>
       </div>
