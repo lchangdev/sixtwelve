@@ -46,17 +46,14 @@
           <tr>
             <th class="header">User Name</th>
             <th class="header">User ID</th>
-            <th class="header">Member of</th>
           </tr>
         </thead>
         <tbody>
           <% @users.each do |user| %>
-            <% user.groups.each do |group| %>
-              <tr>
-                <td><%= user.name %></td>
-                <td><%= user.id %></td>
-                <td><%= group.name %></td>
-              </tr>
+            <tr>
+              <td><%= user.name %></td>
+              <td><%= user.id %></td>
+            </tr>
             <% end %>
           <% end %>
         </tbody>
