@@ -22,12 +22,14 @@
           <% @groups.each do |group| %>
             <% group.members.each do |member| %>
               <tr>
-                <% if current_user.id == member.user_id %>
-                  <td><%= group.name %></td>
-                  <td><%=link_to 'Enter', group_path(group), class: 'group-link' %></td>
-                <% else %>
-                  <td><%= group.name %></td>
-                  <td>please email</td>
+                <% if group.members.nil? %>
+                  <% if current_user.id == member.user_id %>
+                    <td><%= group.name %></td>
+                    <td><%=link_to 'Enter', group_path(group), class: 'group-link' %></td>
+                  <% else %>
+                    <td><%= group.name %></td>
+                    <td>please email</td>
+                  <% end %>
                 <% end %>
               </tr>
             <% end %>
