@@ -32,7 +32,7 @@
       <% @prayers.reverse.each do |prayer| %>
       <tr>
         <td><img src="<%= prayer.user.image %>" class="img-circle avatar" alt="Responsive image"> <%= link_to prayer.title, prayer_path(prayer), class: 'prayer-link' %></td>
-        <td>by <%= prayer.user.name %></td>
+        <td>by <span class="prayer-author"><%= prayer.user.name %><span></td>
         <td><%= prayer.created_at.strftime("%d %b. %Y") %></td>
         <% if current_user.id == prayer.user_id %>
           <td><%= link_to "edit", edit_prayer_path(prayer), class: 'edit-link' %></td>
