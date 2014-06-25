@@ -78,10 +78,7 @@ padding: 30px 15px;
 
 .instructions-container h5 {
   line-height: 30px;
-}
-
-#instruction-text {
-  font-weight: 300;
+  font-weight: 200;
 }
 
 /* groups show */

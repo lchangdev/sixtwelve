@@ -14,23 +14,26 @@
     <% if !signed_in? %>
       <h2 class="header" id="sign-in-message">Please sign in to join your group.</h2>
     <% else %>
-    <div class="col-md-12">
-      <h1 class="header">Please select a group</h1>
-    </div>
-    <div class="col-md-12">
-      <table class="table">
-        <% @groups.each do |group| %>
-          <% group.members.each do |member| %>
-            <tr>
-              <% if current_user.id == member.user_id %>
-                <td><%= group.name %></td>
-                <td><%=link_to 'Enter', group_path(group), class: 'group-link' %></td>
-              <% end %>
-            </tr>
+      <div class="col-md-12">
+        <h1 class="header">Please select a group</h1>
+      </div>
+      <div class="col-md-12">
+        <table class="table">
+          <% @groups.each do |group| %>
+            <% group.members.each do |member| %>
+              <tr>
+                <% if current_user.id == member.user_id %>
+                  <td><%= group.name %></td>
+                  <td><%=link_to 'Enter', group_path(group), class: 'group-link' %></td>
+                <% else %>
+                  <td><%= group.name %></td>
+                  <td>please email</td>
+                <% end %>
+              </tr>
+            <% end %>
           <% end %>
-        <% end %>
-      </table>
-    </div>
+        </table>
+      </div>
     <% end %>
   </div>
 
