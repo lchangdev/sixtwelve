@@ -28,9 +28,14 @@ class GroupsController < ApplicationController
 
   def show
     authenticate!
-    @group = Group.find(params[:id])
-    @members = Member.where(group_id: params[:id])
-    @prayers = @group.prayers.paginate(:page => params[:page], :per_page => 15)
+    if member?
+      @group = Group.find(params[:id])
+      @members = Member.where(group_id: params[:id])
+      @prayers = @group.prayers.paginate(:page => params[:page], :per_page => 15)
+    else
+      flash[:notice] = "You do not have access to this page."
+      redirect_to groups_path
+    end
   end
 
   def edit

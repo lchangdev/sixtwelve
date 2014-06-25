@@ -9,6 +9,16 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def member?
+    memberships = []
+    current_user.groups.each do |group|
+      group.members.each do |member|
+        memberships << member.group_id
+      end
+    end
+    memberships.include?(params[:id].to_i)
+  end
+
   def signed_in?
     current_user.present?
   end
@@ -20,7 +30,7 @@ class ApplicationController < ActionController::Base
 
   def admin!
     unless signed_in? && admin?
-      flash[:notice] = "You do not have access to the admin page."
+      flash[:notice] = "You do not have access to this page."
       redirect_to groups_path
     end
   end
@@ -36,6 +46,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  helper_method :member?
   helper_method :current_user
   helper_method :signed_in?
   helper_method :admin?
