@@ -4,7 +4,6 @@
 padding: 30px 15px;
 }
 
-body,
 .header {
   font-weight: 200;
 }
@@ -20,16 +19,6 @@ body,
 
 /* navbar */
 
-.new-container,
-.new-group-container,
-.new-member-container {
-  height: 300px;
-}
-
-.new-group-container {
-  padding-top: 15px;
-}
-
 .icon-bar {
   background-color: black;
 }
@@ -42,6 +31,23 @@ body,
   background-color: white;
 }
 
+/* admin */
+
+.new-container,
+.new-group-container,
+.new-member-container {
+  height: 300px;
+}
+
+.new-container,
+.new-group-member-container,
+.test {
+  padding-bottom: 100px;
+}
+
+.new-group-container {
+  padding-top: 15px;
+}
 /* groups index */
 
 .homepage-header {
