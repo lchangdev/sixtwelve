@@ -2,10 +2,14 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all.order(:name)
+
+    @memberships = []
     if signed_in?
-      @members = Member.where("user_id = ?", current_user.id)
-    else
-      @members = Member.new
+      current_user.groups.each do |group|
+        group.members.each do |member|
+          @memberships << member.group_id
+        end
+      end
     end
   end
 

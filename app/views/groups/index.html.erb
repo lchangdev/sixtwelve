@@ -11,28 +11,37 @@
   </div>
 
   <div class="group-index-container col-md-12">
-    <% if !signed_in? %>
-      <h2 class="header" id="sign-in-message">Please sign in to join your group.</h2>
-    <% else %>
+
+    <% if signed_in? %>
+
       <div class="col-md-12">
         <h1 class="header">Please select a group</h1>
       </div>
       <div class="col-md-12">
         <table class="table">
           <% @groups.each do |group| %>
-            <% group.members.each do |member| %>
-              <tr>
-                <% if !group.members.nil? %>
-                  <% if current_user.id == member.user_id %>
-                    <td><%= group.name %></td>
-                    <td><%=link_to 'Enter', group_path(group), class: 'group-link' %></td>
-                  <% else %>
-                    <td><%= group.name %></td>
-                    <td>please email</td>
-                  <% end %>
-                <% end %>
-              </tr>
-            <% end %>
+            <tr>
+              <td><%= group.name %></td>
+              <% if @memberships.include?(group.id) %>
+                <td><%=link_to 'Enter', group_path(group), class: 'group-link' %></td>
+              <% else %>
+                <td>request to join</td>
+              <% end %>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    <% else %>
+      <h2 class="header" id="sign-in-message">Please sign in to join your group.</h2>
+      <div class="col-md-12">
+        <h1 class="header">Active Groups</h1>
+      </div>
+      <div class="col-md-12">
+        <table class="table">
+          <% @groups.each do |group| %>
+            <tr>
+              <td><%= group.name %></td>
+            </tr>
           <% end %>
         </table>
       </div>

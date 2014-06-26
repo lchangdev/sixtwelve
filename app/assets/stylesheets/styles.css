@@ -1,4 +1,5 @@
 /* global */
+
 body {
   font-weight: 100;
 }
@@ -51,6 +52,7 @@ padding: 30px 15px;
 .new-group-container {
   padding-top: 15px;
 }
+
 /* groups index */
 
 .homepage-header {
@@ -188,5 +190,5 @@ padding: 30px 15px;
 }
 
 #footer-name {
-  font-weight: 100;
+  font-size: .8em;
 }
