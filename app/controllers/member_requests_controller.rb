@@ -6,17 +6,14 @@ class MemberRequestsController < ApplicationController
     @member_request.group = Group.find(params[:group_id])
     @member_request.user = current_user
     if @member_request.save
-      MemberRequestMailer.new_member_request(current_user, @member_request.group).deliver
-      MemberRequestMailer.request_notification(current_user, @member_request.group).deliver
+      # , @member_request.group
+      MemberRequestMailer.new_member_request(current_user).deliver
+      # MemberRequestMailer.request_notification(current_user, @member_request.group).deliver
+      flash[:notice] = "Successfully sent your request."
       redirect_to groups_path
     else
+      flash[:notice] = "Error please try again."
       render groups_path
     end
   end
-
-  private
-
-  # def member_request_params
-  #   params.require(:member_request).permit(:group).merge(user: current_user)
-  # end
 end
