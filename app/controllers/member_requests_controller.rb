@@ -7,7 +7,7 @@ class MemberRequestsController < ApplicationController
     @member_request.user = current_user
     if @member_request.save
       MemberRequestMailer.new_member_request(current_user).deliver
-      redirect_to groups_path
+      redirect_to groups_pathf
     else
       render groups_path
     end
