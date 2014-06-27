@@ -6,7 +6,8 @@ class MemberRequestsController < ApplicationController
     @member_request.group = Group.find(params[:group_id])
     @member_request.user = current_user
     if @member_request.save
-      MemberRequestMailer.new_member_request(current_user).deliver
+      MemberRequestMailer.new_member_request(current_user, @member_request.group).deliver
+      MemberRequestMailer.request_notification(current_user, @member_request.group).deliver
       redirect_to groups_path
     else
       render groups_path
