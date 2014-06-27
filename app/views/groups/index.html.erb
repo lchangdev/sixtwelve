@@ -25,7 +25,8 @@
               <% if @memberships.include?(group.id) %>
                 <td><%=link_to 'Enter', group_path(group), class: 'group-link' %></td>
               <% else %>
-                <td>request to join</td>
+                <td><%= link_to 'Request to join', group_member_requests_path(group), method: :post %></td>
+                <!-- {controller: :member_requests, action: :create, group: group} -->
               <% end %>
             </tr>
           <% end %>

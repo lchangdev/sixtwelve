@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # end
 
   resources :groups do
+    resources :member_requests, only: [:new, :create]
     resources :prayers
   end
 

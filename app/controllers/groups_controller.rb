@@ -2,7 +2,6 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all.order(:name)
-
     @memberships = []
     if signed_in?
       current_user.groups.each do |group|

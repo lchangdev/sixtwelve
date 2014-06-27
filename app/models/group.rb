@@ -5,4 +5,5 @@ class Group < ActiveRecord::Base
   has_many :prayers, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :users, through: :members
+  has_many :member_requests
 end
