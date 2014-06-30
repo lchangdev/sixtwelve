@@ -60,6 +60,7 @@ class GroupsController < ApplicationController
 
   def destroy
     @group = Group.find(params[:id])
+
     @group.destroy
     flash[:notice] = "You have deleted this group."
 
