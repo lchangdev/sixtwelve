@@ -1,5 +1,7 @@
 <div class="edit-group-container col-md-12">
+
   <h1 class="header">Edit group</h1>
+
   <%= form_for @group, html: { class: "form-horizontal" } do |f| %>
     <div class="form-group">
       <%= f.label :name, class: "col-md-2 control-label header" %>
@@ -7,12 +9,13 @@
         <%= f.text_field :name, required: true, class: "form-control" %><br>
       </div>
     </div>
-
     <div class="col-md-5">
       <%= f.submit 'Submit', class: 'btn btn-default' %>
     </div>
   <% end %>
+
   <div class="page-links-container col-md-12">
     <%= link_to "back", groups_path %>
   </div>
+
 </div>

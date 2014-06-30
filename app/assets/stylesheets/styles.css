@@ -35,7 +35,7 @@ padding: 30px 15px;
   background-color: white;
 }
 
-/* admin */
+/* groups#new admin */
 
 .new-container,
 .new-group-container,
@@ -53,7 +53,13 @@ padding: 30px 15px;
   padding-top: 15px;
 }
 
-/* groups index */
+.new-member-container,
+.user-group-info-container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+/* groups#index */
 
 .homepage-header {
   font-size: 2.5em;
@@ -83,7 +89,7 @@ padding: 30px 15px;
   font-weight: 200;
 }
 
-/* groups show */
+/* groups#show */
 
 .new-prayer-container {
   text-align: left;
@@ -155,22 +161,15 @@ padding: 30px 15px;
   text-align: center;
 }
 
-/* prayers show */
+/* prayers#show */
 
 .prayer-comments-container,
 .new-prayer-comment-container {
   padding-bottom: 10px;
 }
 
-/* new groups and members */
 
-.new-member-container,
-.user-group-info-container {
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-
-/* new prayer */
+/* prayer#new */
 
 .comment-btn {
   text-align: center;

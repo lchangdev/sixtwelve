@@ -1,14 +1,12 @@
 class MembersController < ApplicationController
   def create
     @member = Member.new(member_params)
-
     @group = Group.all
-
     if @member.save
       flash[:notice] = "Successfully saved member."
       redirect_to new_group_path
     else
-      flash[:notice] = "This user is already a member." # does not work
+      flash[:notice] = "This user is already a member."
       redirect_to new_group_path
     end
   end
@@ -17,7 +15,6 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
     @member.destroy
     flash[:notice] = "You have deleted this member."
-
     redirect_to group_path(@member.group_id)
   end
 

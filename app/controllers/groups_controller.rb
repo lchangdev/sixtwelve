@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
   end
 
   def new
-    admin!
+    admin! && authenticate!
     @group = Group.new
     @member = Member.new
     @users = User.all.order(:name)
@@ -22,7 +22,6 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-
     if @group.save
       flash[:notice] = "Successfully saved group."
       redirect_to new_group_path
@@ -42,28 +41,30 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.find(params[:id])
+    authenticate!
+    if member?
+      @group = Group.find(params[:id])
+    else
+      flash[:notice] = "You do not have access to this page."
+      redirect_to groups_path
+    end
   end
 
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
       flash[:notice] = "Successfully edited group."
-
       redirect_to new_group_path
     else
       flash.now[:notice] = "Did not save. Please try again."
-
       render :new
     end
   end
 
   def destroy
     @group = Group.find(params[:id])
-
     @group.destroy
     flash[:notice] = "You have deleted this group."
-
     redirect_to new_group_path
   end
 
