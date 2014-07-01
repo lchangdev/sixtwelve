@@ -1,5 +1,6 @@
 class MemberRequestMailer < ActionMailer::Base
-  default from: "sixtwelveinfo@gmail.com"
+  default from: "sixtwelveinfo@gmail.com",
+    return_path: 'sixtwelveinfo@gmail.com'
 
   def new_member_request(user, group)
     @user = user
