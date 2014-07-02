@@ -15,6 +15,13 @@ church but for this site to handle multiple churches.
 
 http://sixtwelve.herokuapp.com
 
+Getting Started
+* Please sign in with facebook.
+* For the purposes of touring the site please click on 'Request to join'
+  for the group 'Lawrence's group'.
+* I will promptly grant access to that group so that you may tour the
+  user experience.
+
 Current Features
 * Users login with Facebook
 * Users are able to see all groups on index page.
