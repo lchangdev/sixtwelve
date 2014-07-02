@@ -1,28 +1,40 @@
-== README
+sixtwelve
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+sixtwelve was created in week 5 of Launch Academy which was the first week
+our cohort learned Rails.
 
-Things you may want to cover:
+I was initially approached with a problem that a church in Southern California
+was having regarding the ability to share prayers amongst groups within a
+single church.
 
-* Ruby version
+sixtwelve was created to address this issue for them. The goal for sixtwelve
+was to create a medium for groups to share their prayers exclusively with their
+group members. When planning the user stories and database for this web app,
+I took into consideration building this web app not only for this particular
+church but for this site to handle multiple churches.
 
-* System dependencies
+http://sixtwelve.herokuapp.com
 
-* Configuration
+Current Features
+* Users login with Facebook
+* Users are able to see all groups on index page.
+* Users must request to join a particular group.
+* Admin page with the ability to create members and groups
+* Users are able to see a list of their group members.
+* Users are able to join multiple groups.
+* Users are able to post new prayers.
+* Users are able to comment on prayers.
+* Users are only able to delete and edit prayers they have created.
+* Users are only able to delete the comments they have created.
+* Admins are able to delete members on the groups show page.
+* Prayers and comments will paginate at 15.
 
-* Database creation
+Features Being/To Be Implemented
+* Rspec with Capybara and FactoryGirl
+* Certain users will be given moderator roles to handle their church's groups.
+* Users will be able to search for prayers through title or description.
+* Users will only be able to request to join a group once to avoid accidential or
+  user misuse.
+* Community groups open to all users to come together regarding current events.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Built using Ruby, HTML, CSS with Rails
